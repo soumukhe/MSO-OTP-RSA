@@ -11,7 +11,7 @@ a) clone this repo git clone ...
 b) cd to the directory module_utils is. Generally will be at: ~/.ansible/collections/ansible_collections/cisco/mso/plugins/module_utils
 c) rename the current mso.py file to mso.py.original
 d) copy the mso.py from cloned repo to this directory
-e) In the working directory/subdirectory where you will run your playbook from copy the kvalue1 file
+e) In the working directory/subdirectory where you will run your playbook from, copy the kvalue1 file
 f) Now for your playbook ensure that the first task is as shown:  ( a smaple playbook for creating schema is in the cloned repo  with this config)
   tasks:
     - name: copy from kvalue1 to kvalue
@@ -29,3 +29,13 @@ g) Now run the playbook.   You will now have only 1 login for the entire playboo
 # Now when the 2nd module runs,  it sees the value of 0 and hence skips the login, but instead reads the token.txt file and uses that value to login.
 # now all the resto of the MSO modules can use that Bearer Token for login instead of being a brand new login with username/password
 # so, you won't have to put in the RSA Challenge token for every module in the playbook.
+#
+#  Please feel free to imporve on this code.
+# Probably better logic would be something like below:
+
+if token.txt exists:
+  authenticate with token from token.txt
+  if authentication successful:
+    return
+authenticate with username/password
+write token to token.txt
