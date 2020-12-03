@@ -22,7 +22,7 @@ g) Now run the playbook.   You will now have only 1 login for the entire playboo
 
 # How it works.
 # I've added few lines of code in mso.py starting at line 218.  They are inbetween comments #SM-1 and ##SM-1   and #SM-2 and ##SM-2
-# on the run of a plabook, during execution of the first task "copy..."   it copies the kvalue1 file to a file called kvalue in the directory where you run your playbook from.   
+# on the run of a playbook, during execution of the first task "copy..."   it copies the kvalue1 file to a file called kvalue in the directory where you run your playbook from.   
 # kvalue1 is just a text file with the value of 1,   so kvalue also has a string vlaue of 1 in it's content
 # next when the first MSO ansible module executes, it checks the kvalue file and the value of 1 means that it does a actual login, so now, you will need to use your RSA OTP Token for that
 # Once it logs in successfully,  it also changes the value of kvalue content to string 0,  it also grabs the Bearer token and saves it to a file called token.txt in the working directory
