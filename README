@@ -8,7 +8,7 @@
 # This is a workaround that can be used meanwhile
 Steps:
 a) clone this repo git clone ...
-b) cd to the directory module_utils is. Generally will be at: ~/.ansible/collections/ansible_collections/cisco/mso/plugins/module_utils
+b) cd to the directory where the Ansible  module_utils is. Generally will be at: ~/.ansible/collections/ansible_collections/cisco/mso/plugins/module_utils
 c) rename the current mso.py file to mso.py.original
 d) copy the mso.py from cloned repo to this directory
 e) In the working directory/subdirectory where you will run your playbook from, copy the kvalue1 file
