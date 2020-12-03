@@ -1,0 +1,63 @@
+---
+
+- name: add schema to Tenant
+  hosts: mso
+  connection: local
+  gather_facts: false
+
+  vars_files:
+    - external_vars.yml
+  tasks:
+    - name: copy from kvalue1 to kvalue
+      template:
+        src: kvalue1
+        dest: kvalue
+
+    - name: Add a new schema
+      cisco.mso.mso_schema_template:
+        host: "{{ host }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+        tenant: "{{ tenant }}"
+        schema: "{{ schema }}"
+        template: "{{ template }}"
+        login_domain: "{{ login_domain }}"
+        validate_certs: "no"
+        use_proxy: false
+        state: present
+      delegate_to: localhost
+
+    - name: Asspcoate schema with site
+      cisco.mso.mso_schema_site:
+        host: "{{ host }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+        schema: "{{ schema }}"
+        site: "{{ site1 }}"
+        login_domain: "{{ login_domain }}"
+        validate_certs: "no"
+        use_proxy: false
+        template: "{{ template }}"
+        state: present
+      delegate_to: localhost
+
+    - name: Asspcoate schema with site
+      cisco.mso.mso_schema_site:
+        host: "{{ host }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+        schema: "{{ schema }}"
+        site: "{{ site2 }}"
+        login_domain: "{{ login_domain }}"
+        validate_certs: "no"
+        use_proxy: false
+        template: "{{ template }}"
+        state: present
+      delegate_to: localhost
+
+
+
+# usage: ansible-playbook --ask-vault-pass 1b.AddSchema.yaml -i hosts -vvv
+# usage: ansible-playbook --vault-id vaultPass 1b.AddSchema.yaml -i hosts -vvv
+# mso_schema – Manage schemas:  https://docs.ansible.com/ansible/latest/modules/mso_schema_module.html#mso-schema-module
+# mso_schema_site – Manage sites in schemas: https://docs.ansible.com/ansible/latest/modules/mso_schema_site_module.html#mso-schema-site-module
