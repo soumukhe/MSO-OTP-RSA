@@ -1,5 +1,5 @@
 # When using One Time Password with RSA Token device (with Radius/AAA domain) it becomes very inconvinient for running Ansible Playbooks
-# A playbook generally has many ansible modules, further you can continate playbooks and run them at one time
+# A playbook generally has many ansible modules, further you can concatinate playbooks and run them at one time
 # The default behavior is that every module in the playbook is a new login, so if you had 10 modules in the playbook, you have to acknowledge your RSA OTP Token 10 times.
 #
 # In the future there is a plan to implement sharing of sessions as part of connection plugin effort 
