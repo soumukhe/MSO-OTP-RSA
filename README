@@ -25,9 +25,9 @@ g) Now run the playbook.   You will now have only 1 login for the entire playboo
 # on the run of a plabook, during execution of the first task "copy..."   it copies the kvalue1 file to a file called kvalue in the directory where you run your playbook from.   
 # kvalue1 is just a text file with the value of 1,   so kvalue also has a string vlaue of 1 in it's content
 # next when the first MSO ansible module executes, it checks the kvalue file and the value of 1 means that it does a actual login, so now, you will need to use your RSA OTP Token for that
-# Once it logs in successfully,  it also changes the value of kvalue conetnt to 0,  it also grabs the Bearer token and saves it to a file called token.txt in the working directory
+# Once it logs in successfully,  it also changes the value of kvalue content to string 0,  it also grabs the Bearer token and saves it to a file called token.txt in the working directory
 # Now when the 2nd module runs,  it sees the value of 0 and hence skips the login, but instead reads the token.txt file and uses that value to login.
-# now all the resto of the MSO modules can use that Bearer Token for login instead of being a brand new login with username/password
+# now all the rest of the MSO modules can use that Bearer Token for login instead of being a brand new login with username/password
 # so, you won't have to put in the RSA Challenge token for every module in the playbook.
 #
 #  Please feel free to imporve on this code.
