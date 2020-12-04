@@ -11,7 +11,7 @@
   vars_prompt:                   #  will prompt for password
      - name: uname
        prompt: username
-       private: no               # private: no means that username will be masked in screen when you type it in
+       private: no               # private: no means that username will be visible in screen when you type it in
 
      - name: pass
        prompt: password
