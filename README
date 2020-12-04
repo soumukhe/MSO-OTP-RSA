@@ -7,7 +7,7 @@
 #
 # This is a workaround that can be used meanwhile
 Steps:
-a) clone this repo git clone ...
+a) clone this repo git clone https://github.com/soumukhe/MSO-OTP-RSA.git
 b) cd to the directory where the Ansible  module_utils is. Generally will be at: ~/.ansible/collections/ansible_collections/cisco/mso/plugins/module_utils
 c) rename the current mso.py file to mso.py.original
 d) copy the mso.py from cloned repo to this directory
