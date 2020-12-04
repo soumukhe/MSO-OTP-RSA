@@ -223,8 +223,7 @@ class MSOModule(object):
           str1 = line.strip()
           k = int(str1)
       fh.close()
-      #k = 1
-      if k <= 1 :
+      if k == 1 :
      ## SM-1
 
           # Perform login request
