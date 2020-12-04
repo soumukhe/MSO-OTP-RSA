@@ -7,17 +7,28 @@
 
   vars_files:
     - external_vars.yml
+
+  vars_prompt:
+     - name: uname
+       prompt: username
+       private: no            # private: yes means that password will be masked in screen
+
+     - name: pass
+       prompt: password
+       private: yes              # private: no means that password will be echoed when you type it in 
+
+
   tasks:
     - name: copy from kvalue1 to kvalue
       template:
         src: kvalue1
         dest: kvalue
-
+    
     - name: Add a new schema
       cisco.mso.mso_schema_template:
         host: "{{ host }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
+        username: "{{ uname }}"
+        password: "{{ pass }}"
         tenant: "{{ tenant }}"
         schema: "{{ schema }}"
         template: "{{ template }}"
@@ -30,8 +41,8 @@
     - name: Asspcoate schema with site
       cisco.mso.mso_schema_site:
         host: "{{ host }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
+        username: "{{ uname }}"
+        password: "{{ pass }}"
         schema: "{{ schema }}"
         site: "{{ site1 }}"
         login_domain: "{{ login_domain }}"
@@ -44,8 +55,8 @@
     - name: Asspcoate schema with site
       cisco.mso.mso_schema_site:
         host: "{{ host }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
+        username: "{{ uname }}"
+        password: "{{ pass }}"
         schema: "{{ schema }}"
         site: "{{ site2 }}"
         login_domain: "{{ login_domain }}"
@@ -57,7 +68,7 @@
 
 
 
-# usage: ansible-playbook --ask-vault-pass 1b.AddSchema.yaml -i hosts -vvv
-# usage: ansible-playbook --vault-id vaultPass 1b.AddSchema.yaml -i hosts -vvv
+# usage:  ansible-playbook 1b.AddSchema.yaml -i hosts -vvv
+# Note, that since this is for OTP, you can't prepopulate password from vault.  You have to put in your OTP Token value when password is prompted for
 # mso_schema – Manage schemas:  https://docs.ansible.com/ansible/latest/modules/mso_schema_module.html#mso-schema-module
 # mso_schema_site – Manage sites in schemas: https://docs.ansible.com/ansible/latest/modules/mso_schema_site_module.html#mso-schema-site-module
