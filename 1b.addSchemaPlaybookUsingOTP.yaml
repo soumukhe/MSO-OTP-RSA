@@ -11,11 +11,11 @@
   vars_prompt:                   #  will prompt for password
      - name: uname
        prompt: username
-       private: no               # private: yes means that username will be masked in screen when you type it in
+       private: no               # private: no means that username will be masked in screen when you type it in
 
      - name: pass
        prompt: password
-       private: yes              # private: no means that password (OTP token value) will not be echoed when you type it in 
+       private: yes              # private: yes means that password (OTP token value) will not be echoed when you type it in 
 
 
   tasks:
